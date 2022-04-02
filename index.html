@@ -4,8 +4,164 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
     <title>Rescripting's two weeks coding for elementary and college.</title>
-    <script src="static/_.js"></script>
-    <link href="static/_.css" rel="stylesheet">
+    <!--    <script src="static/_.js"></script>-->
+    <!--    <link href="static/_.css" rel="stylesheet">-->
+    <style>
+        @media only screen and (max-width: 600px){
+    .tab-icon-text {
+        display: none;
+    }
+
+    #tab-text-left {
+        display: none;
+    }
+
+    p, span, li {
+        font-size: 12px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
+
+@font-face {
+    src: url('emblems/cabin.ttf');
+    font-family: Cabin;
+}
+
+body * {
+    font-family: Cabin;
+}
+
+body{
+    position: relative;
+    width: 100%;
+    height:98vh;
+    margin: 0;
+}
+
+.none {
+    display: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.btn-press-effect:active {
+    transform: scale(.9);
+}
+
+#background-image {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background: url('emblems/_.jpg');
+    opacity: .3;
+    background-position: center;
+    background-size: 70%;
+    background-repeat: no-repeat;
+}
+
+#tabs {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-content: center;
+    border-top: 0.1px solid #10FF10;
+    padding: 3px;
+    background: antiquewhite;
+}
+
+#tab-text-left {
+    width: 50%;
+}
+
+.tabs {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    padding: 5px;
+}
+
+.tabs > h3 {
+    margin: 0;
+    padding: 5px;
+}
+
+.tab-icon {
+    height: 40px;
+    width: 40px;
+    font-size: 40px;
+}
+
+.tab-selected {
+    border: 0.1px solid #ff1010;
+    border-radius: 5px;
+    background: whitesmoke;
+}
+
+#tab-views {
+    height: 94%;
+    padding: 5px;
+}
+
+.tab-views {
+    width: 99%;
+    height: 90%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    overflow-y: scroll;
+    padding-left: 5px;
+}
+
+/* welcome tab view */
+
+
+
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(e){
+    tabs = ["welcome", "html", "android", "scratch", "python"]
+
+    FOR_EACH = function(list, ext){
+        for ( i=0; i<list.length; i++) ext(i, list[i])
+    }
+
+    switch_tab = function(ls){
+    FOR_EACH(ls, function(i, e){
+        f = document.querySelector("#tab-"+ls[i])
+        f.onclick = function(e){
+            document.querySelector("#tab-view-welcome").style.display = "none"
+            for (j=0; j<ls.length; j++){
+                typ = e.target.id.split("-")[1]
+                _ = document.querySelector("#tab-"+ls[j]).parentElement
+                __ = document.querySelector("#tab-view-"+ls[j])
+                if ( typ === ls[j] ){
+                    __.style.display = "flex"
+                    _.className = "tabs tab-selected"
+                }
+                else {
+                    __.style.display = "none"
+                    _.className = "tabs"
+                }
+            }
+        }
+    })
+   }
+
+   switch_tab(tabs)
+   document.querySelector("#tab-welcome").click()
+})
+
+
+    </script>
 </head>
 <body>
 <div id="background-image"></div>
@@ -20,10 +176,10 @@
             <p>Starting : 6<sup>th</sup> April 2022 || Time : 10am - 1pm daily.</p>
             <p><b>Online class available too.</b></p>
 
-            <a href="tel:09096741514"><img src="emblems/call.svg" class="tab-icon"></a>
+            <a href="tel:09096741514"><img class="tab-icon" src="emblems/call.svg"></a>
             <p>Click the phone icon to place call directly or copy number 09096741514</p>
 
-            <a href="mailto:rescriptinginfo@gmail.com"><img src="emblems/mail.svg" class="tab-icon"></a>
+            <a href="mailto:rescriptinginfo@gmail.com"><img class="tab-icon" src="emblems/mail.svg"></a>
             <p>Click the mail icon to send a mail (Rescriptinginfo@gmail.com)</p>
 
             <h6>Payment Info</h6>
@@ -123,7 +279,7 @@
         "In some ways, programming is like painting. You start with a blank canvas and certain basic raw materials. You use a combination of science, art, and craft to determine what to do with them." - <b>Andrew Hunt</b>
     </span>
     <div class="tabs" id="welcome">
-        <img class="tab-icon btn-press-effect" id="tab-welcome" src="static/_.jpg" style="border-radius: 10px;">
+        <img class="tab-icon btn-press-effect" id="tab-welcome" src="emblems/_.jpg" style="border-radius: 10px;">
         <h3 class="tab-icon-text">WELCOME</h3>
     </div>
     <div class="tabs" id="html">

@@ -48,7 +48,7 @@ body{
     position: absolute;
     width: inherit;
     height: inherit;
-    background: url('static/_.jpg');
+    background: url('emblems/_.jpg');
     opacity: .3;
     background-position: center;
     background-size: 70%;
